@@ -1,6 +1,7 @@
 import JobCard, { OpeningsWithCompany } from "@/components/job/job-card";
 import { PaginationDemo } from "@/components/search/pagination";
 import { Badge } from "@/components/ui/badge";
+import baseUrl from "@/lib/utils";
 
 type searchPageQuery = Promise<{
   q: string;
@@ -24,12 +25,9 @@ export default async function SearchPage({
   if (ms && !isNaN(Number(ms))) params.append("ms", ms);
   if (page && !isNaN(Number(page))) params.append("page", page);
 
-  const res = await fetch(
-    `http://localhost:3000/api/search?${params.toString()}`,
-    {
-      cache: "no-store",
-    }
-  );
+  const res = await fetch(`${baseUrl}/api/search?${params.toString()}`, {
+    cache: "no-store",
+  });
 
   if (!res.ok) {
     console.error("Failed to fetch jobs:", res.status);

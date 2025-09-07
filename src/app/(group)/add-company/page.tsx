@@ -20,7 +20,7 @@ export default function AddCompanyPage() {
       description: description,
       imageUrl: ImageUrl,
     };
-    const res = await fetch("http://localhost:3000/api/company", {
+    const res = await fetch("/api/company", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

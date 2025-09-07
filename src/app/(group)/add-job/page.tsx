@@ -40,7 +40,7 @@ export default function AddJobPage() {
       employment_type: EmploymentType,
       company_id: user?.company.id,
     };
-    const res = await fetch("http://localhost:3000/api/job", {
+    const res = await fetch("/api/job", {
       method: "POST",
       body: JSON.stringify(data),
     });

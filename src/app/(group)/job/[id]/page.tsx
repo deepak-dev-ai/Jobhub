@@ -4,6 +4,7 @@ import SaveDeleteJobButton from "@/components/job/save-delete-btn";
 import ViewApplicants from "@/components/job/view-job-applicants-btn";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import baseUrl from "@/lib/utils";
 import { getUserFromCookies } from "@/services/helper";
 import prismaClient from "@/services/prisma";
 import { BadgeCheckIcon, Briefcase, IndianRupee, MapPin } from "lucide-react";
@@ -15,7 +16,7 @@ export default async function JobPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const res = await fetch(`/api/job/${id}`);
+  const res = await fetch(`${baseUrl}/api/job/${id}`);
   const data = await res.json();
   const job = data.data;
   const user = await getUserFromCookies();

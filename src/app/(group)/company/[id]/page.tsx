@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import JobListingAndReviewConatiner from "@/components/company/review/job-listing-review-container";
 import Image from "next/image";
+import baseUrl from "@/lib/utils";
 
 export default async function CompanyPage({
   params,
@@ -10,11 +11,11 @@ export default async function CompanyPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const res = await fetch(`/api/company/${id}`);
+  const res = await fetch(`${baseUrl}/api/company/${id}`);
   const data = await res.json();
   const company = data.data;
 
-  const res2 = await fetch(`/api/review/${id}`);
+  const res2 = await fetch(`${baseUrl}/api/review/${id}`);
   const data2 = await res2.json();
   const review = data2.data;
   return (
