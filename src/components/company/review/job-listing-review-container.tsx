@@ -46,7 +46,7 @@ export default function JobListingAndReviewContainer({
     const data = await res.json();
     if (data.success) {
       toast.success("Review created");
-
+      window.location.reload();
       const finalReview = {
         ...reviewToCreate,
         id: String(data.id),
@@ -60,7 +60,6 @@ export default function JobListingAndReviewContainer({
       toast.error("Failed to add review please login");
     }
   }
-
   return (
     <div className="max-w-lg flex-col mt-8 gap-8">
       <Tabs defaultValue="listed-jobs">
