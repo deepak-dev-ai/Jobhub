@@ -1,0 +1,83 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model job {
+  id              String  @id @default(auto()) @map("_id") @db.ObjectId
+  title           String
+  description     String
+  location        String
+  salary          Int
+  employment_type String? @default("full-time")
+  job_type        String  @default("On-site")
+}
+
+model user {
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  email       String        @unique
+  password    String
+  company     company?
+  review      review[]
+  application application[]
+  saved_jobs  saved_jobs[]
+}
+
+model company {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String
+  ownerId     String     @unique @db.ObjectId
+  image_url   String?
+  owner       user       @relation(fields: [ownerId], references: [id])
+  jobs        openings[]
+}
+
+model openings {
+  id              String        @id @default(auto()) @map("_id") @db.ObjectId
+  title           String
+  description     String
+  location        String
+  salary          Int
+  employment_type String?       @default("full-time")
+  job_type        String        @default("On-site")
+  company_id      String        @db.ObjectId
+  company         company       @relation(fields: [company_id], references: [id])
+  application     application[]
+  saved_jobs      saved_jobs[]
+}
+
+model review {
+  id         String @id @default(auto()) @map("_id") @db.ObjectId
+  content    String
+  user_id    String @db.ObjectId
+  user       user   @relation(fields: [user_id], references: [id])
+  company_id String
+}
+
+model application {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  user_id String   @db.ObjectId
+  user    user     @relation(fields: [user_id], references: [id])
+  job_id  String   @db.ObjectId
+  job     openings @relation(fields: [job_id], references: [id])
+}
+
+model saved_jobs {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  user_id String   @db.ObjectId
+  user    user     @relation(fields: [user_id], references: [id])
+  job_id  String   @db.ObjectId
+  job     openings @relation(fields: [job_id], references: [id])
+}
