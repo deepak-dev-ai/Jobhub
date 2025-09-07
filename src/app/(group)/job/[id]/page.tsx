@@ -15,7 +15,7 @@ export default async function JobPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const res = await fetch(`http://localhost:3000/api/job/${id}`);
+  const res = await fetch(`/api/job/${id}`);
   const data = await res.json();
   const job = data.data;
   const user = await getUserFromCookies();

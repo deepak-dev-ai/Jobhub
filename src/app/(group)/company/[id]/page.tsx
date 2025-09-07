@@ -10,11 +10,11 @@ export default async function CompanyPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const res = await fetch(`http://localhost:3000/api/company/${id}`);
+  const res = await fetch(`/api/company/${id}`);
   const data = await res.json();
   const company = data.data;
 
-  const res2 = await fetch(`http://localhost:3000/api/review/${id}`);
+  const res2 = await fetch(`/api/review/${id}`);
   const data2 = await res2.json();
   const review = data2.data;
   return (
