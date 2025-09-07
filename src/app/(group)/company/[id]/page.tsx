@@ -19,12 +19,12 @@ export default async function CompanyPage({
   const data2 = await res2.json();
   const review = data2.data;
   return (
-    <div className="p-6 max-w-3xl mx-auto">
-      <Card className="p-8 shadow-xl  flex flex-col items-center">
+    <main className="p-6 max-w-3xl mx-auto">
+      <Card className="p-4 shadow-xl  flex flex-col items-center">
         <div className="flex justify-end w-full">
           <DeleteCompanyButton id={id} />
         </div>
-        <div className="flex flex-col items-center w-full">
+        <div className="flex flex-col gap-2 items-center w-full">
           <Image
             src={company?.image_url ?? "/fallback.png"}
             alt={company.name}
@@ -46,6 +46,6 @@ export default async function CompanyPage({
           reviews={review}
         />
       </div>
-    </div>
+    </main>
   );
 }

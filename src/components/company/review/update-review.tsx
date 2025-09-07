@@ -60,16 +60,13 @@ export default function UpdateReviewButton({
               done.
             </DialogDescription>
           </DialogHeader>
-          <div className="grid gap-4">
+          <div className="my-4">
             <Input
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
           </div>
           <DialogFooter>
-            <DialogClose asChild>
-              <Button variant="outline">Cancel</Button>
-            </DialogClose>
             <Button type="submit">Save changes</Button>
           </DialogFooter>
         </form>

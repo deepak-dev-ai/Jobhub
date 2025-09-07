@@ -3,6 +3,7 @@ import EditDeleteJob from "@/components/job/edit-delete-job-btn";
 import SaveDeleteJobButton from "@/components/job/save-delete-btn";
 import ViewApplicants from "@/components/job/view-job-applicants-btn";
 import { Badge } from "@/components/ui/badge";
+import { headers } from "next/headers";
 import { Card } from "@/components/ui/card";
 import baseUrl from "@/lib/utils";
 import { getUserFromCookies } from "@/services/helper";
@@ -98,10 +99,12 @@ export default async function JobPage({
           {job.description}
         </div>
         <div className="flex flex-wrap gap-4 items-center">
-          {user && (
+          {user && user?.company?.id !== job.company.id && (
             <ApplyDeleteJobButton hasApplied={userHasApplied} job={job} />
           )}
-          {user && <SaveDeleteJobButton hasSaved={userHasSaved} job={job} />}
+          {user && user?.company?.id !== job.company.id && (
+            <SaveDeleteJobButton hasSaved={userHasSaved} job={job} />
+          )}
           <EditDeleteJob job={job} />
           <ViewApplicants job={job} />
         </div>

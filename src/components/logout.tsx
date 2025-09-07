@@ -4,7 +4,7 @@ export default function LogoutButton() {
   const router = useRouter();
   const handleLogout = async () => {
     await fetch("/api/logout", { method: "DELETE" });
-    router.push("/login");
+    router.push("/");
   };
 
   return <button onClick={handleLogout}>Logout</button>;

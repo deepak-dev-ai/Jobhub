@@ -40,9 +40,6 @@ export default function ApplyDeleteJobButton({
       setLoading(false);
     }
   }
-  if (user?.company.id == job?.company_id) {
-    return null;
-  }
   return (
     <>
       {!userHasApplied ? (

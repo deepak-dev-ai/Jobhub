@@ -114,7 +114,9 @@ export default function JobListingAndReviewContainer({
                   {reviewList.map((rev) => (
                     <Card key={rev.id} className="p-4 flex flex-col gap-2">
                       <div className="flex justify-between">
-                        <Badge variant="secondary">{rev.user.email}</Badge>
+                        <div>
+                          <Badge variant="secondary">{rev.user.email}</Badge>
+                        </div>
                         <div className="flex gap-2 items-center">
                           {user?.id === rev.user_id && (
                             <DeleteReviewButton id={rev.id} />

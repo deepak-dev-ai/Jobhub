@@ -64,7 +64,7 @@ export default function LoginPage() {
           />
           <button
             type="submit"
-            className="bg-indigo-500 hover:bg-indigo-600 text-white py-3 rounded-lg font-semibold shadow-md transition-all hover:scale-[1.02]"
+            className="bg-indigo-500 hover:bg-indigo-600 text-white py-3 cursor-pointer rounded-lg font-semibold shadow-md transition-all hover:scale-[1.02]"
           >
             Log In
           </button>

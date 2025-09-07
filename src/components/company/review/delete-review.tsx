@@ -11,6 +11,7 @@ export default function DeleteReviewButton({ id }: { id: string }) {
     const data = await res.json();
     if (data.success) {
       toast.success("Review deleted");
+      window.location.reload();
     } else {
       toast.error("Failed to delete review");
     }

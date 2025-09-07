@@ -52,6 +52,7 @@ export default function EditJob({ job }: { job: openings }) {
       const resData = await res.json();
       if (resData.success) {
         toast.success("job edited");
+        window.location.reload();
       } else {
         toast.error("Failed to your edit job");
       }
@@ -148,9 +149,6 @@ export default function EditJob({ job }: { job: openings }) {
             </div>
           </div>
           <DialogFooter>
-            <DialogClose asChild>
-              <Button variant="outline">Cancel</Button>
-            </DialogClose>
             <Button disabled={loading} type="submit" onClick={handleClick}>
               Save
             </Button>

@@ -73,7 +73,7 @@ export default function JobCard({
             {job.location}
           </Badge>
           <Link href={`/job/${job.id}`}>
-            <Button size="sm" className="ml-2 text-sm">
+            <Button size="sm" className="cursor-pointer ml-2 text-sm">
               View Details
             </Button>
           </Link>
