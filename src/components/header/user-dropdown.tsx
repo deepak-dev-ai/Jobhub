@@ -1,5 +1,5 @@
 "use client";
-import { CircleUserRound } from "lucide-react";
+import { FaUser } from "react-icons/fa";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,7 +19,11 @@ export function DropdownMenuDemo() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <CircleUserRound size={35} />
+        <FaUser
+          size={24}
+          color={user ? "green" : "red"}
+          className="cursor-pointer"
+        />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-40" align="start">
         <DropdownMenuLabel>Profile</DropdownMenuLabel>

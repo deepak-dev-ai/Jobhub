@@ -12,8 +12,8 @@ export default async function JobsPage() {
     },
   });
   return (
-    <main className="px-4 overflow-x-hidden md:px-8 lg:px-16 py-10">
-      <div className="flex flex-wrap justify-center gap-15">
+    <main className="px-4 overflow-x-hidden md:px-8 lg:px-10 py-10">
+      <div className="flex flex-wrap">
         {jobs.map((job: any) => {
           return <JobCard fromSearch={false} key={job.id} job={job} />;
         })}

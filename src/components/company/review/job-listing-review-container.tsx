@@ -64,10 +64,16 @@ export default function JobListingAndReviewContainer({
     <div className="max-w-lg flex-col mt-8 gap-8">
       <Tabs defaultValue="listed-jobs">
         <TabsList className="mb-4 flex justify-center">
-          <TabsTrigger value="listed-jobs" className="px-6 py-2 font-semibold">
+          <TabsTrigger
+            value="listed-jobs"
+            className="px-6 py-2 font-semibold cursor-pointer"
+          >
             Listed Jobs
           </TabsTrigger>
-          <TabsTrigger value="reviews" className="px-6 py-2 font-semibold">
+          <TabsTrigger
+            value="reviews"
+            className="px-6 py-2 font-semibold cursor-pointer"
+          >
             Reviews
           </TabsTrigger>
         </TabsList>
@@ -98,7 +104,10 @@ export default function JobListingAndReviewContainer({
                     value={reviewText}
                     onChange={(e) => setReviewText(e.target.value)}
                   />
-                  <Button onClick={handleCreateReview} className="h-fit">
+                  <Button
+                    onClick={handleCreateReview}
+                    className="h-fit cursor-pointer"
+                  >
                     Add
                   </Button>
                 </div>

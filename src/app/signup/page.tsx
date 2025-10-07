@@ -1,5 +1,16 @@
 "use client";
-import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
@@ -8,13 +19,9 @@ import { toast } from "sonner";
 export default function SignUpPage() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const router = useRouter();
-
   async function handleSignup(e: FormEvent) {
     e.preventDefault();
-    setError("");
-
     try {
       const res = await fetch("/api/signup", {
         method: "POST",
@@ -32,57 +39,66 @@ export default function SignUpPage() {
         toast.success("Signup successfully");
         router.push("/");
       } else {
-        setError("Signup failed — this account already exists");
+        toast.error("Signup failed — this account already exists");
       }
     } catch (err) {
-      setError("Something went wrong. Please try again later.");
+      toast.error("Something went wrong. Please try again later.");
     }
   }
 
   return (
-    <main className="min-h-screen w-full flex justify-center items-center bg-gradient-to-br from-blue-50 to-blue-100">
-      <Card className="w-full max-w-md p-8 shadow-xl rounded-2xl bg-white">
-        <h1 className="text-center font-extrabold text-3xl text-gray-800">
-          Create an Account
-        </h1>
-        <p className="text-center text-gray-500 mt-2 text-sm">
-          Join us today and start your journey
-        </p>
+    <main className="min-h-screen w-full flex justify-center items-center">
+      <Card className="w-full max-w-sm">
+        <CardHeader>
+          <CardTitle>Create an account</CardTitle>
+          <CardDescription>
+            Enter your email below to create your account
+          </CardDescription>
+          <CardAction>
+            <Link href="/login">
+              <Button variant="link">Login</Button>
+            </Link>
+          </CardAction>
+        </CardHeader>
+        <CardContent>
+          <form>
+            <div className="flex flex-col gap-6">
+              <div className="grid gap-2">
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="m@example.com"
+                  required
+                />
+              </div>
 
-        <form onSubmit={handleSignup} className="flex flex-col gap-5 mt-6">
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email..."
-            className="border text-black border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition"
-            required
-          />
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password..."
-            className="border text-black border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition"
-            required
-          />
-          <button
+              <div className="grid gap-2">
+                <div className="flex items-center">
+                  <Label htmlFor="password">Password</Label>
+                </div>
+                <Input
+                  id="password"
+                  type="password"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+            </div>
+          </form>
+        </CardContent>
+        <CardFooter className="flex-col gap-2">
+          <Button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-600 text-white cursor-pointer py-3 rounded-lg font-semibold shadow-md transition-all hover:scale-[1.02]"
+            className="w-full cursor-pointer"
+            onClick={handleSignup}
           >
             Sign Up
-          </button>
-          <div className="text-sm text-center text-gray-600">
-            Already have an account?{" "}
-            <Link href={"/login"} className="text-blue-500 hover:underline">
-              Login
-            </Link>
-          </div>
-        </form>
-
-        {error && (
-          <p className="text-red-600 text-center mt-4 text-sm">{error}</p>
-        )}
+          </Button>
+        </CardFooter>
       </Card>
     </main>
   );

@@ -17,7 +17,7 @@ export default function JobCard({
   return (
     <div
       className={`${
-        fromSearch ? "w-full" : "w-full sm:w-1/2 md:w-1/3 lg:w-1/4"
+        fromSearch ? "w-full" : "w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4"
       } p-2`}
     >
       <Card className="h-full p-6 flex flex-col justify-between shadow-md hover:shadow-xl border rounded-2xl transition-all duration-200 ease-in-out hover:scale-[1.01]">

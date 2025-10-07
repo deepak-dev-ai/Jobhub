@@ -47,7 +47,7 @@ export default function UpdateReviewButton({
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="ghost" size="sm">
+        <Button variant="ghost" size="sm" className="cursor-pointer">
           <Edit size={16} />
         </Button>
       </DialogTrigger>
@@ -67,7 +67,9 @@ export default function UpdateReviewButton({
             />
           </div>
           <DialogFooter>
-            <Button type="submit">Save changes</Button>
+            <Button type="submit" className="cursor-pointer">
+              Save changes
+            </Button>
           </DialogFooter>
         </form>
       </DialogContent>

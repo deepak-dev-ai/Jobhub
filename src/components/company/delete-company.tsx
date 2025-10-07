@@ -30,7 +30,10 @@ export default function DeleteCompanyButton({ id }: { id: string }) {
   if (!user?.company || id != user?.company.id) return null;
   else {
     return (
-      <button onClick={HandleDelete}>
+      <button
+        onClick={HandleDelete}
+        className="text-red-600 hover:text-red-800 cursor-pointer"
+      >
         <Trash2 />
       </button>
     );

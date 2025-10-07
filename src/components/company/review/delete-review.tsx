@@ -18,7 +18,10 @@ export default function DeleteReviewButton({ id }: { id: string }) {
   };
 
   return (
-    <button onClick={handleDelete}>
+    <button
+      onClick={handleDelete}
+      className="text-red-600 hover:text-red-800 cursor-pointer"
+    >
       <Trash2 size={16} />
     </button>
   );

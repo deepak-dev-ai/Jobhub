@@ -64,7 +64,9 @@ export default function ViewApplicants({
     return (
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="outline">View Applicants</Button>
+          <Button variant="outline" className="cursor-pointer">
+            View Applicants
+          </Button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
@@ -81,7 +83,7 @@ export default function ViewApplicants({
                   <div className=" flex justify-between px-5">
                     <Badge>{application?.user.email}</Badge>
                     <button onClick={() => handleDelete(application.id)}>
-                      <Trash2 className="text-red-500" />
+                      <Trash2 className="text-red-600 hover:text-red-800 cursor-pointer" />
                     </button>
                   </div>
                 </Card>

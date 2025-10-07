@@ -29,7 +29,10 @@ export default function EditDeleteJob({ job }: { job: openings }) {
   if (user?.company?.id === job?.company_id) {
     return (
       <div className="flex gap-5">
-        <button onClick={handleDelete}>
+        <button
+          onClick={handleDelete}
+          className="text-red-600 hover:text-red-800 cursor-pointer"
+        >
           <Trash2 />
         </button>
         <EditJob job={job} />

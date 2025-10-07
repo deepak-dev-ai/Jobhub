@@ -1,8 +1,8 @@
 "use client";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Input } from "../ui/input";
-import Link from "next/link";
 
 type Suggestion = {
   id: string;
@@ -18,6 +18,8 @@ export default function SearchInput() {
   function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === "Enter" && input.trim()) {
       router.push("/search?q=" + encodeURIComponent(input));
+      setInput("");
+      setSuggestions([]);
     }
   }
 

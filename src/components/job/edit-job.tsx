@@ -66,7 +66,7 @@ export default function EditJob({ job }: { job: openings }) {
     <Dialog>
       <form>
         <DialogTrigger asChild>
-          <Edit />
+          <Edit className="cursor-pointer" />
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
@@ -149,7 +149,12 @@ export default function EditJob({ job }: { job: openings }) {
             </div>
           </div>
           <DialogFooter>
-            <Button disabled={loading} type="submit" onClick={handleClick}>
+            <Button
+              disabled={loading}
+              type="submit"
+              onClick={handleClick}
+              className="cursor-pointer"
+            >
               Save
             </Button>
           </DialogFooter>
