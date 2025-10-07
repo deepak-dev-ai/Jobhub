@@ -61,7 +61,9 @@ export default function JobCard({
             </Badge>
           </div>
 
-          <p className="text-sm mt-2 line-clamp-3">{job.description}</p>
+          <p className="text-sm mt-2 line-clamp-3 text-gray-700">
+            {job.description}
+          </p>
         </div>
 
         <div className="flex items-center justify-between mt-6">
