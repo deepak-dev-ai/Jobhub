@@ -55,7 +55,8 @@ export default function AddJobPage() {
   }
 
   return (
-    <main className="w-full min-h-screen flex justify-center items-center p-4">
+    <main className="w-full min-h-screen flex flex-col items-center p-9">
+      <h1 className="text-4xl font-bold mb-6">Add Job</h1>
       <Card className="w-full sm:w-[90%] md:w-[70%] lg:w-[50%] xl:w-[35%] p-6">
         <form onSubmit={handleClick}>
           <div className="grid gap-5">
@@ -133,7 +134,11 @@ export default function AddJobPage() {
                 </Select>
               </div>
             </div>
-            <Button disabled={loading} type="submit" className="w-full">
+            <Button
+              disabled={loading}
+              type="submit"
+              className="w-full cursor-pointer"
+            >
               {loading ? "Saving..." : "Save"}
             </Button>
           </div>

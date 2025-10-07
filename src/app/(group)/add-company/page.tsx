@@ -11,10 +11,12 @@ export default function AddCompanyPage() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [ImageUrl, setImageUrl] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const router = useRouter();
   async function handleClick(e: FormEvent) {
     e.preventDefault();
+    setLoading(true);
     const company = {
       name,
       description: description,
@@ -39,8 +41,9 @@ export default function AddCompanyPage() {
   }
 
   return (
-    <main className="w-full h-full flex justify-center items-center">
-      <Card className="w-[25%] h-[50%] p-8 m-30">
+    <main className="w-full min-h-screen flex flex-col items-center p-9">
+      <h1 className="text-2xl font-bold mb-6">Add Company</h1>
+      <Card className="w-full sm:w-[90%] md:w-[70%] lg:w-[50%] xl:w-[35%] p-6">
         <form onSubmit={handleClick}>
           <div className="grid gap-6">
             <div className="grid gap-3">
@@ -69,7 +72,13 @@ export default function AddCompanyPage() {
                 onChange={(e) => setImageUrl(e.target.value)}
               />
             </div>
-            <Button>Save</Button>
+            <Button
+              disabled={loading}
+              type="submit"
+              className="w-full cursor-pointer"
+            >
+              {loading ? "Saving..." : "Save"}
+            </Button>
           </div>
         </form>
       </Card>

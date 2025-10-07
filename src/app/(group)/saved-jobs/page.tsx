@@ -4,9 +4,9 @@ import prismaClient from "@/services/prisma";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-export default async function AppliedJobPage() {
+export default async function SavedJobPage() {
   const user = await getUserFromCookies();
-  const applications = await prismaClient.application.findMany({
+  const savedJobs = await prismaClient.saved_jobs.findMany({
     where: {
       user_id: user?.id,
     },
@@ -17,11 +17,11 @@ export default async function AppliedJobPage() {
     },
   });
 
-  if (!applications.length) {
+  if (!savedJobs.length) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[80vh]">
-        <h2 className="text-lg font-semibold mb-4">No applications yet</h2>
-        <p className="mb-6">Looks like you haven’t applied to any jobs.</p>
+        <h2 className="text-lg font-semibold mb-4">No saved jobs yet</h2>
+        <p className="mb-6">Looks like you haven’t saved any jobs.</p>
         <Link href="/search">
           <Button className="cursor-pointer">Explore Jobs</Button>
         </Link>
@@ -31,11 +31,10 @@ export default async function AppliedJobPage() {
 
   return (
     <main className="p-4">
-      <h1 className="text-2xl text-center font-bold mb-6">Your Applications</h1>
-
+      <h1 className="text-2xl text-center font-bold mb-6">Your Saved Jobs</h1>
       <div className="flex flex-wrap justify-center">
-        {applications.map((appli) => (
-          <JobCard key={appli.id} job={appli.job} fromSearch={false} />
+        {savedJobs.map((job) => (
+          <JobCard key={job.id} job={job.job} fromSearch={false} />
         ))}
       </div>
     </main>

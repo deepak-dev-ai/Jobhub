@@ -27,31 +27,34 @@ export function DropdownMenuDemo() {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-40" align="start">
         <DropdownMenuLabel>Profile</DropdownMenuLabel>
+        <DropdownMenuSeparator />
         <DropdownMenuGroup>
           {user && !user?.company && (
             <DropdownMenuItem>
-              <Link href={"/add-company"}>Add Your Company</Link>
+              <Link href={"/add-company"}>Add Company</Link>
             </DropdownMenuItem>
           )}
           {user?.company && (
             <DropdownMenuItem>
-              <Link href={`/company/${user.company.id}`}>
-                View Your Company
-              </Link>
+              <Link href={`/company/${user.company.id}`}>View Company</Link>
             </DropdownMenuItem>
           )}
           {user?.company && (
             <DropdownMenuItem>
-              <Link href={"/add-job"}>Add New Job</Link>
+              <Link href={"/add-job"}>Add Job</Link>
             </DropdownMenuItem>
           )}
           {user && (
             <DropdownMenuItem>
-              <Link href={"/applied-job"}>Your Job Applications</Link>
+              <Link href={"/applied-job"}>Applied jobs</Link>
+            </DropdownMenuItem>
+          )}
+          {user && (
+            <DropdownMenuItem>
+              <Link href={"/saved-jobs"}>Saved jobs</Link>
             </DropdownMenuItem>
           )}
         </DropdownMenuGroup>
-        <DropdownMenuSeparator />
         {!user && (
           <DropdownMenuItem>
             <Link href={"/login"}>Log in</Link>
