@@ -14,16 +14,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model job {
-  id              String  @id @default(auto()) @map("_id") @db.ObjectId
-  title           String
-  description     String
-  location        String
-  salary          Int
-  employment_type String? @default("full-time")
-  job_type        String  @default("On-site")
-}
-
 model user {
   id          String        @id @default(auto()) @map("_id") @db.ObjectId
   email       String        @unique
